@@ -32,7 +32,7 @@ class Day05 : Puzzle<Pair<List<String>, List<List<Int>>>, Int> {
         return true
     }
 
-    private fun List<Int>.middle(): Int = this[size / 2]
+    private fun <T> List<T>.middle(): T = this[size / 2]
 
 }
 
