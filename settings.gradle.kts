@@ -5,3 +5,4 @@ rootProject.name = "adventofcode"
 include("base")
 include("2023")
 include("2024")
+include("2022")
