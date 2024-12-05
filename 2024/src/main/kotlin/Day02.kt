@@ -2,7 +2,7 @@ package advent.of.code
 
 import kotlin.math.abs
 
-@Input("/Day02.txt")
+@Files("/Day02.txt")
 class Day02 : Puzzle<List<List<Int>>, Int> {
 
     override fun parse(input: List<String>): List<List<Int>> {

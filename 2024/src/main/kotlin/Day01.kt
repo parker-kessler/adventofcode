@@ -2,7 +2,7 @@ package advent.of.code
 
 import kotlin.math.abs
 
-@Input("/Day01.txt")
+@Files("/Day01.txt")
 class Day01 : Puzzle<Pair<MutableList<Int>, MutableList<Int>>, Int> {
 
     override fun parse(input: List<String>): Pair<MutableList<Int>, MutableList<Int>> {

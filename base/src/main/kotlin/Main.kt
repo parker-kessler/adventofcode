@@ -16,15 +16,15 @@ interface Puzzle<T, S> {
 
 @Target(AnnotationTarget.CLASS)
 @Retention(AnnotationRetention.RUNTIME)
-annotation class Input(vararg val files: String)
+annotation class Files(vararg val names: String)
 
 fun <A, B, T : Puzzle<A, B>> execute(clazz: KClass<T>) {
     // Check if the class has the FileContent annotation
     val instance = clazz.createInstance()
-    val annotation = clazz.findAnnotation<Input>()
+    val annotation = clazz.findAnnotation<Files>()
 
     if (annotation != null) {
-        val files = annotation.files
+        val files = annotation.names
         try {
             println("Executing: ${clazz.simpleName}")
 

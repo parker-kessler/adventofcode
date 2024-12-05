@@ -1,16 +1,20 @@
 package advent.of.code
 
-@Input("/Day06-Test.txt", "/Day06.txt")
-class Day06 : Puzzle<List<String>, Int> {
-    override fun parse(input: List<String>): List<String> {
-        return input
+data class Input(
+    val lines: List<String>
+)
+
+@Files("/Day06-Test.txt", "/Day06.txt")
+class Day06 : Puzzle<Input, Int> {
+    override fun parse(input: List<String>): Input {
+        return Input(lines = listOf())
     }
 
-    override fun partOne(input: List<String>): Int {
+    override fun partOne(input: Input): Int {
         return 0
     }
 
-    override fun partTwo(input: List<String>): Int {
+    override fun partTwo(input: Input): Int {
         return 0
     }
 }
