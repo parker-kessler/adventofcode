@@ -1,7 +1,7 @@
 package advent.of.code
 
 data class Day06Input(
-    val grid: MutableList<MutableList<Char>>,
+    val grid: List<List<Char>>,
     var guard: Pair<Int, Int>
 )
 
@@ -25,22 +25,14 @@ class Day06 : Puzzle<Day06Input, Int> {
     companion object {
         private const val GUARD = '^'
         private const val BORDER = '!'
-        private const val VISITED = 'X'
         private const val OBSTRUCTION = '#'
         private const val EMPTY = '.'
     }
 
     override fun parse(input: List<String>): Day06Input {
-        val width = input.first().length + 2
-        val grid = input.map {
-            it.toMutableList().apply {
-                add(0, BORDER)
-                add(BORDER)
-            }
-        }.toMutableList().apply {
-            add(0, MutableList(width) { BORDER })
-            add(MutableList(width) { BORDER })
-        }
+        val horizontalBorder = List(input.first().length + 2) { BORDER }
+
+        val grid = listOf(horizontalBorder) + input.map { listOf(BORDER) + it.toList() + BORDER } + listOf(horizontalBorder)
 
         var guard = 0 to 0
         for (i in grid.indices) {
@@ -53,42 +45,34 @@ class Day06 : Puzzle<Day06Input, Int> {
         return Day06Input(grid = grid, guard = guard)
     }
 
-    override fun partOne(input: Day06Input): Int = analyze(input.grid, input.guard).let { countSeen(input.grid) }
+    override fun partOne(input: Day06Input): Int = analyze(input.grid, input.guard)
 
     override fun partTwo(input: Day06Input): Int {
-        return input.grid.indices.sumOf { i ->
-            input.grid[i].indices.count { j ->
-                if (input.grid[i][j] != EMPTY) {
-                    false
-                } else {
-                    val grid = input.grid.map { it.toMutableList() }.toMutableList().apply {
-                        this[i][j] = OBSTRUCTION
-                    }
-                    analyze(grid, input.guard)
-                }
-            }
+        val grid = input.grid
+        return grid.indices.sumOf { i ->
+            grid[i].indices.filter { j -> grid[i][j] == EMPTY }.count { j -> analyze(grid, input.guard, i to j) == 0 }
         }
     }
 
-    private fun analyze(grid: MutableList<MutableList<Char>>, startingGuard: Pair<Int, Int>): Boolean {
+    private fun analyze(grid: List<List<Char>>, startingGuard: Pair<Int, Int>, obstruction: Pair<Int, Int>? = null): Int {
+        val seen = mutableMapOf<Pair<Int, Int>, MutableSet<Direction>>()
         var guard = startingGuard
         var direction = Direction.UP
-        var steps = 0
-        val max = grid.size * grid[0].size
 
-        while(grid[guard.first][guard.second] != BORDER && ++steps < max) {
+        while(grid[guard.first][guard.second] != BORDER) {
+            if (!seen.computeIfAbsent(guard) { mutableSetOf() }.add(direction)) return 0
+
             val newGuardPosition = guard.first + direction.dx to guard.second + direction.dy
-            grid[guard.first][guard.second] = VISITED
-            when(grid[newGuardPosition.first][newGuardPosition.second]) {
-                OBSTRUCTION -> direction = direction.turnRight()
-                else -> guard = newGuardPosition
+
+            if (newGuardPosition == obstruction || grid[newGuardPosition.first][newGuardPosition.second] == OBSTRUCTION) {
+                direction = direction.turnRight()
+            } else {
+                guard = newGuardPosition
             }
         }
 
-        return steps == max
+        return seen.size
     }
-
-    private fun countSeen(grid: List<List<Char>>): Int = grid.sumOf { row -> row.count { it == VISITED } }
 }
 
 fun main() {
