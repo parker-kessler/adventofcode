@@ -31,13 +31,15 @@ fun <A, B, T : Puzzle<A, B>> execute(clazz: KClass<T>) {
             files.forEach { file ->
                 println("File: $file")
 
-                val input = clazz.java.getResourceAsStream(file)!!.bufferedReader().readLines().let { instance.parse(it) }
-
                 measureTime {
+                    val input = clazz.java.getResourceAsStream(file)!!.bufferedReader().readLines().let { instance.parse(it) }
+
                     println("Part one solution is ${instance.partOne(input)}")
                 }.also { println("Part one solution took $it") }
 
                 measureTime {
+                    val input = clazz.java.getResourceAsStream(file)!!.bufferedReader().readLines().let { instance.parse(it) }
+
                     println("Part two solution is ${instance.partTwo(input)}")
                 }.also { println("Part two solution took $it") }
             }
