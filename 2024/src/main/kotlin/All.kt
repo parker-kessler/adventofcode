@@ -7,4 +7,6 @@ fun main() {
     execute(Day04::class)
     execute(Day05::class)
     execute(Day06::class)
+    execute(Day07::class)
+    execute(Day08::class)
 }
