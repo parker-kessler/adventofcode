@@ -20,9 +20,7 @@ class Day12 : Puzzle<List<List<Char>>, Long> {
         for (i in 1 until input.size - 1) {
             for (j in 1 until input[i].size - 1) {
                 if (!seen.contains(i to j)) {
-                    findPerimeterAndArea(input, seen, i to j).let {
-                        sum += it.first * it.second
-                    }
+                    sum += normalPrice(input, seen, i to j)
                 }
             }
         }
@@ -36,16 +34,14 @@ class Day12 : Puzzle<List<List<Char>>, Long> {
         for (i in 1 until input.size - 1) {
             for (j in 1 until input[i].size - 1) {
                 if (!seen.contains(i to j)) {
-                    findEdgesAndArea(input, seen, i to j).let {
-                        sum += it.first * it.second
-                    }
+                    sum += bulkDiscount(input, seen, i to j)
                 }
             }
         }
         return sum
     }
 
-    private fun findPerimeterAndArea(grid: List<List<Char>>, seen: MutableSet<Pair<Int, Int>>, start: Pair<Int, Int>): Pair<Int, Int> {
+    private fun normalPrice(grid: List<List<Char>>, seen: MutableSet<Pair<Int, Int>>, start: Pair<Int, Int>): Int {
         var perimeter = 0
         val seenSizeBefore = seen.size
 
@@ -61,10 +57,10 @@ class Day12 : Puzzle<List<List<Char>>, Long> {
             perimeter += different.size
             same.forEach { queue.add(it) }
         }
-        return perimeter to seen.size - seenSizeBefore
+        return perimeter * (seen.size - seenSizeBefore)
     }
 
-    private fun findEdgesAndArea(grid: List<List<Char>>, seen: MutableSet<Pair<Int, Int>>, start: Pair<Int, Int>): Pair<Int, Int> {
+    private fun bulkDiscount(grid: List<List<Char>>, seen: MutableSet<Pair<Int, Int>>, start: Pair<Int, Int>): Int {
         val edgePoints = mutableMapOf<Int, MutableList<Pair<Int, Int>>>()
         val seenSizeBefore = seen.size
 
@@ -94,7 +90,7 @@ class Day12 : Puzzle<List<List<Char>>, Long> {
             }
         }
 
-        return edges to seen.size - seenSizeBefore
+        return edges * (seen.size - seenSizeBefore)
     }
 
 
