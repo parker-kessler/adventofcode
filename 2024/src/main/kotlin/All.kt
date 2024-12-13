@@ -12,4 +12,5 @@ fun main() {
     execute(Day09::class)
     execute(Day10::class)
     execute(Day11::class)
+    execute(Day12::class)
 }
