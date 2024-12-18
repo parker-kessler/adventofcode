@@ -28,7 +28,8 @@ class Day06 : Puzzle<Day06Input, Int> {
 
     override fun parse(input: List<String>): Day06Input {
         val horizontalBorder = List(input.first().length + 2) { BORDER }
-        val grid = listOf(horizontalBorder) + input.map { listOf(BORDER) + it.toList() + BORDER } + listOf(horizontalBorder)
+        val grid =
+            listOf(horizontalBorder) + input.map { listOf(BORDER) + it.toList() + BORDER } + listOf(horizontalBorder)
 
         var guard = 0 to 0
         for (i in grid.indices) {
@@ -51,12 +52,16 @@ class Day06 : Puzzle<Day06Input, Int> {
         }
     }
 
-    private fun analyze(grid: List<List<Char>>, startingGuard: Pair<Int, Int>, obstruction: Pair<Int, Int>? = null): Int {
+    private fun analyze(
+        grid: List<List<Char>>,
+        startingGuard: Pair<Int, Int>,
+        obstruction: Pair<Int, Int>? = null
+    ): Int {
         val seen = mutableMapOf<Pair<Int, Int>, MutableSet<Direction>>()
         var guard = startingGuard
         var direction = Direction.UP
 
-        while(grid[guard.first][guard.second] != BORDER) {
+        while (grid[guard.first][guard.second] != BORDER) {
             if (!seen.computeIfAbsent(guard) { mutableSetOf() }.add(direction)) return 0
             (guard.first + direction.dx to guard.second + direction.dy).let {
                 if (it == obstruction || grid[it.first][it.second] == OBSTRUCTION) {

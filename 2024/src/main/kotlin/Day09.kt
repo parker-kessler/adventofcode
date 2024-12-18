@@ -71,7 +71,7 @@ class Day09 : Puzzle<List<Int>, Long> {
         return list.checkSum()
     }
 
-    private fun List<Int>.checkSum(): Long = mapIndexed { index, i ->  if (i == -1) 0 else index * i.toLong() }.sum()
+    private fun List<Int>.checkSum(): Long = mapIndexed { index, i -> if (i == -1) 0 else index * i.toLong() }.sum()
 
 }
 

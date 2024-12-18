@@ -20,7 +20,8 @@ class Day13 : Puzzle<List<ClawInput>, Long> {
     }
 
 
-    private fun parsePair(line: String): Pair<Long, Long> = "[0-9]+".toRegex().findAll(line).map { it.value.toLong() }.let {it.first() to it.last() }
+    private fun parsePair(line: String): Pair<Long, Long> =
+        "[0-9]+".toRegex().findAll(line).map { it.value.toLong() }.let { it.first() to it.last() }
 
     override fun partOne(input: List<ClawInput>): Long = solve(input)
 
@@ -33,8 +34,8 @@ class Day13 : Puzzle<List<ClawInput>, Long> {
         val (pX, pY) = clawInput.prize
 
         val denominator = aX * bY - bX * aY
-        val firstNumerator = (bY*pX - bX*pY)
-        val secondNumerator = (aX*pY - aY*pX)
+        val firstNumerator = (bY * pX - bX * pY)
+        val secondNumerator = (aX * pY - aY * pX)
 
         if (firstNumerator % denominator == 0L && secondNumerator % denominator == 0L) {
             firstNumerator / denominator * A_COST + secondNumerator / denominator * B_COST

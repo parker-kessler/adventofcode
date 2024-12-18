@@ -28,7 +28,7 @@ class Day04 : Puzzle<List<String>, Int> {
     override fun partTwo(input: List<String>): Int {
         var sum = 0
         for (x in 1 until input.size - 1) {
-            for (y in 1  until input[x].length - 1) {
+            for (y in 1 until input[x].length - 1) {
                 if (input[x][y] == 'A') {
                     if (input[x - 1][y - 1] == 'M' && input[x - 1][y + 1] == 'M' && input[x + 1][y - 1] == 'S' && input[x + 1][y + 1] == 'S') sum++
                     if (input[x - 1][y - 1] == 'S' && input[x - 1][y + 1] == 'M' && input[x + 1][y - 1] == 'S' && input[x + 1][y + 1] == 'M') sum++
@@ -40,7 +40,8 @@ class Day04 : Puzzle<List<String>, Int> {
         return sum
     }
 
-    private fun List<String>.safe(x: Int, y: Int): Char = if (x < 0 || x >= this.size || y < 0 || y >= this[0].length) '.' else this[x][y]
+    private fun List<String>.safe(x: Int, y: Int): Char =
+        if (x < 0 || x >= this.size || y < 0 || y >= this[0].length) '.' else this[x][y]
 
 }
 

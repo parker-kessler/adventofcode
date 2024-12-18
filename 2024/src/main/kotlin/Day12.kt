@@ -52,7 +52,7 @@ class Day12 : Puzzle<List<List<Char>>, Long> {
 
             val (same, different) = directions
                 .map { (dx, dy) -> square.first + dx to square.second + dy }
-                .partition { (dx, dy) ->  grid[dx][dy] == grid[start.first][start.second] }
+                .partition { (dx, dy) -> grid[dx][dy] == grid[start.first][start.second] }
 
             perimeter += different.size
             same.forEach { queue.add(it) }
@@ -71,7 +71,7 @@ class Day12 : Puzzle<List<List<Char>>, Long> {
 
             val (same, different) = directions
                 .mapIndexed { index, (dx, dy) -> index to (square.first + dx to square.second + dy) }
-                .partition { (_, point) ->  grid[point.first][point.second] == grid[start.first][start.second] }
+                .partition { (_, point) -> grid[point.first][point.second] == grid[start.first][start.second] }
 
             same.forEach { (_, point) -> queue.add(point) }
             different.forEach { (index, _) -> edgePoints.computeIfAbsent(index) { mutableListOf() }.add(square) }

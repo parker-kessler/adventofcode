@@ -46,6 +46,7 @@ class Day17 : Puzzle<Program, String> {
                         continue
                     }
                 }
+
                 4 -> registerB = registerB xor registerC
                 5 -> output.add(comboOperand % 8)
                 6 -> registerB = divide(registerA, comboOperand)

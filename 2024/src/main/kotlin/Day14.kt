@@ -11,9 +11,9 @@ class Day14 : Puzzle<List<Robot>, Long> {
         const val SECONDS = 100
     }
 
-    override fun parse(input: List<String>): List<Robot> = input.map {
-        line -> "-?[0-9]+".toRegex().findAll(line).map { it.value.toInt() }.toList().let {
-            (pX, pY, vX, vY) ->  Robot(pX to pY, vX to vY)
+    override fun parse(input: List<String>): List<Robot> = input.map { line ->
+        "-?[0-9]+".toRegex().findAll(line).map { it.value.toInt() }.toList().let { (pX, pY, vX, vY) ->
+            Robot(pX to pY, vX to vY)
         }
     }
 

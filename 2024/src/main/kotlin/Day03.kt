@@ -25,7 +25,8 @@ class Day03 : Puzzle<List<String>, Int> {
         }
     }
 
-    private fun String.evaluateMultiply(): Int = "[0-9]+".toRegex().findAll(this).map { it.value.toInt() }.reduce { acc, i -> acc * i }
+    private fun String.evaluateMultiply(): Int =
+        "[0-9]+".toRegex().findAll(this).map { it.value.toInt() }.reduce { acc, i -> acc * i }
 
 }
 

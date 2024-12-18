@@ -17,7 +17,8 @@ class Day05 : Puzzle<Pair<List<String>, List<List<Int>>>, Int> {
 
     override fun partTwo(input: Pair<List<String>, List<List<Int>>>): Int {
         return input.let { (rules, pages) ->
-            pages.filter { !it.isValid(rules) }.sumOf { it.sortedWith { a, b -> if ("$a|$b" in rules) -1 else 1 }.middle() }
+            pages.filter { !it.isValid(rules) }
+                .sumOf { it.sortedWith { a, b -> if ("$a|$b" in rules) -1 else 1 }.middle() }
         }
     }
 

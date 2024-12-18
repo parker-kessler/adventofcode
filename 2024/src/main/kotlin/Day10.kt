@@ -29,7 +29,13 @@ class Day10 : Puzzle<List<String>, Int> {
         return sum
     }
 
-    private fun findPeaks(input: List<String>, i: Int, j: Int, peaks: MutableCollection<Pair<Int, Int>>, previous: Char? = null) {
+    private fun findPeaks(
+        input: List<String>,
+        i: Int,
+        j: Int,
+        peaks: MutableCollection<Pair<Int, Int>>,
+        previous: Char? = null
+    ) {
         if (i < 0 || j < 0 || i >= input.size || j >= input[0].length || previous != null && previous + 1 != input[i][j])
             return
 

@@ -17,7 +17,7 @@ class Day01 : Puzzle<Pair<MutableList<Int>, MutableList<Int>>, Int> {
     }
 
     override fun partOne(input: Pair<MutableList<Int>, MutableList<Int>>): Int {
-        return input.let { (left, right) -> left.sorted().zip(right.sorted()).sumOf { (l, r) -> abs(l - r) }}
+        return input.let { (left, right) -> left.sorted().zip(right.sorted()).sumOf { (l, r) -> abs(l - r) } }
     }
 
     override fun partTwo(input: Pair<MutableList<Int>, MutableList<Int>>): Int {

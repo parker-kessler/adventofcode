@@ -8,8 +8,8 @@ class Day18 : Puzzle<List<Pair<Int, Int>>, String> {
         val directions: List<Pair<Int, Int>> = arrayListOf(0 to 1, 0 to -1, 1 to 0, -1 to 0)
     }
 
-    override fun parse(input: List<String>) = input.map {
-        line -> line.split(",").map(String::toInt).let { Pair(it[0], it[1]) }
+    override fun parse(input: List<String>) = input.map { line ->
+        line.split(",").map(String::toInt).let { Pair(it[0], it[1]) }
     }
 
     override fun partOne(input: List<Pair<Int, Int>>): String = getCost(input, 1024).toString()
@@ -56,7 +56,7 @@ class Day18 : Puzzle<List<Pair<Int, Int>>, String> {
                 this[0][i] = Int.MAX_VALUE
                 this[SIZE + 1][i] = Int.MAX_VALUE
             }
-            input.take(size).forEach { this[it.second+1][it.first+1] = Int.MAX_VALUE }
+            input.take(size).forEach { this[it.second + 1][it.first + 1] = Int.MAX_VALUE }
         }
     }
 }
