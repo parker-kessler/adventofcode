@@ -1,11 +1,10 @@
 package advent.of.code
 
-data class Equation(val target: Long, val amounts: List<Long>)
-
-data class Step(val amount: Long, val index: Int, val debug: String)
-
 @Files("/Day07.txt")
-class Day07 : Puzzle<List<Equation>, Long> {
+class Day07 : Puzzle<List<Day07.Equation>, Long> {
+
+    data class Equation(val target: Long, val amounts: List<Long>)
+    data class Step(val amount: Long, val index: Int, val debug: String)
 
     override fun parse(input: List<String>): List<Equation> {
         return input.map { line ->

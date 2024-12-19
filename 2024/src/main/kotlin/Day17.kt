@@ -2,10 +2,10 @@ package advent.of.code
 
 import kotlin.math.pow
 
-data class Program(val registerA: Long, val instructions: List<Int>)
-
 @Files("/Day17.txt")
-class Day17 : Puzzle<Program, String> {
+class Day17 : Puzzle<Day17.Program, String> {
+
+    data class Program(val registerA: Long, val instructions: List<Int>)
 
     override fun parse(input: List<String>) = Program(
         registerA = "[0-9]+".toRegex().find(input[0])?.value?.toLong() ?: 0,

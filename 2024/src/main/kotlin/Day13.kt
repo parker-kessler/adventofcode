@@ -1,9 +1,9 @@
 package advent.of.code
 
-data class ClawInput(val prize: Pair<Long, Long>, val aButton: Pair<Long, Long>, val bButton: Pair<Long, Long>)
-
 @Files("/Day13.txt")
-class Day13 : Puzzle<List<ClawInput>, Long> {
+class Day13 : Puzzle<List<Day13.ClawInput>, Long> {
+
+    data class ClawInput(val prize: Pair<Long, Long>, val aButton: Pair<Long, Long>, val bButton: Pair<Long, Long>)
 
     companion object {
         const val A_COST = 3

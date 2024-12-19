@@ -1,9 +1,9 @@
 package advent.of.code
 
-data class Robot(val p: Pair<Int, Int>, val v: Pair<Int, Int>)
-
 @Files("/Day14.txt")
-class Day14 : Puzzle<List<Robot>, Long> {
+class Day14 : Puzzle<List<Day14.Robot>, Long> {
+
+    data class Robot(val p: Pair<Int, Int>, val v: Pair<Int, Int>)
 
     companion object {
         const val MAX_X = 101

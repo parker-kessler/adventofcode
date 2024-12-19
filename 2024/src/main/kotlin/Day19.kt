@@ -35,9 +35,7 @@ class Day19 : Puzzle<Day19.Day19Input, Long> {
             var sum = 0L
             for (i in index until towel.length) {
                 current = current.children[towel[i]] ?: break
-                if (current.pattern != null) {
-                    sum += analyze(i + 1, root, towel, counts)
-                }
+                current.pattern?.let { sum += analyze(i + 1, root, towel, counts) }
             }
             sum
         }

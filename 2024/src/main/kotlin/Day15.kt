@@ -1,9 +1,9 @@
 package advent.of.code
 
-data class Day15Input(val grid: List<MutableList<Char>>, val moves: List<Char>)
-
 @Files("/Day15.txt")
-class Day15 : Puzzle<Day15Input, Long> {
+class Day15 : Puzzle<Day15.Day15Input, Long> {
+
+    data class Day15Input(val grid: List<MutableList<Char>>, val moves: List<Char>)
 
     companion object {
         const val EMPTY = '.'

@@ -1,23 +1,23 @@
 package advent.of.code
 
-data class Day06Input(
-    val grid: List<List<Char>>,
-    var guard: Pair<Int, Int>
-)
-
-enum class Direction(val dx: Int, val dy: Int) {
-    UP(-1, 0), DOWN(1, 0), LEFT(0, -1), RIGHT(0, 1);
-
-    fun turnRight(): Direction = when (this) {
-        UP -> RIGHT
-        RIGHT -> DOWN
-        DOWN -> LEFT
-        LEFT -> UP
-    }
-}
-
 @Files("/Day06.txt")
-class Day06 : Puzzle<Day06Input, Int> {
+class Day06 : Puzzle<Day06.Day06Input, Int> {
+
+    data class Day06Input(
+        val grid: List<List<Char>>,
+        var guard: Pair<Int, Int>
+    )
+
+    enum class Direction(val dx: Int, val dy: Int) {
+        UP(-1, 0), DOWN(1, 0), LEFT(0, -1), RIGHT(0, 1);
+
+        fun turnRight(): Direction = when (this) {
+            UP -> RIGHT
+            RIGHT -> DOWN
+            DOWN -> LEFT
+            LEFT -> UP
+        }
+    }
 
     companion object {
         private const val GUARD = '^'

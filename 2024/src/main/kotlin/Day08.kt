@@ -1,9 +1,9 @@
 package advent.of.code
 
-data class Day08Input(val map: Map<Char, List<Pair<Int, Int>>>, val m: Int, val n: Int)
-
 @Files("/Day08.txt")
-class Day08 : Puzzle<Day08Input, Int> {
+class Day08 : Puzzle<Day08.Day08Input, Int> {
+
+    data class Day08Input(val map: Map<Char, List<Pair<Int, Int>>>, val m: Int, val n: Int)
 
     override fun parse(input: List<String>): Day08Input {
         val map = mutableMapOf<Char, List<Pair<Int, Int>>>()

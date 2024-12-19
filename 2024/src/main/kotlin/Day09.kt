@@ -1,10 +1,10 @@
 package advent.of.code
 
-data class File(val position: Int, val size: Int, val id: Int)
-data class Space(val position: Int, val size: Int)
-
 @Files("/Day09.txt")
 class Day09 : Puzzle<List<Int>, Long> {
+
+    data class File(val position: Int, val size: Int, val id: Int)
+    data class Space(val position: Int, val size: Int)
 
     override fun parse(input: List<String>): List<Int> = input.first().map { it - '0' }
 

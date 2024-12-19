@@ -2,21 +2,21 @@ package advent.of.code
 
 import java.util.PriorityQueue
 
-data class Reindeer(val score: Int, val direction: MazeDirection, val path: List<Pair<Int, Int>>)
-
-enum class MazeDirection(val dx: Int, val dy: Int) {
-    UP(-1, 0), DOWN(1, 0), LEFT(0, -1), RIGHT(0, 1);
-
-    fun opposite(): MazeDirection = when (this) {
-        UP -> DOWN
-        DOWN -> UP
-        LEFT -> RIGHT
-        RIGHT -> LEFT
-    }
-}
-
 @Files("/Day16.txt")
 class Day16 : Puzzle<List<MutableList<Char>>, Int> {
+
+    data class Reindeer(val score: Int, val direction: MazeDirection, val path: List<Pair<Int, Int>>)
+
+    enum class MazeDirection(val dx: Int, val dy: Int) {
+        UP(-1, 0), DOWN(1, 0), LEFT(0, -1), RIGHT(0, 1);
+
+        fun opposite(): MazeDirection = when (this) {
+            UP -> DOWN
+            DOWN -> UP
+            LEFT -> RIGHT
+            RIGHT -> LEFT
+        }
+    }
 
     companion object {
         const val START = 'S'
