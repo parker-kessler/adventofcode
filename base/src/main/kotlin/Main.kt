@@ -44,7 +44,7 @@ fun <A, B, T : Puzzle<A, B>> execute(clazz: KClass<T>) {
                 }.also { println("Part two solution took $it") }
             }
         } catch (e: Exception) {
-            println("Error reading file: ${e.message}")
+            println(e.stackTraceToString())
         }
     } else {
         println("No Input annotation found on class ${clazz.simpleName}.")
