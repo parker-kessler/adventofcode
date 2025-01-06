@@ -4,7 +4,7 @@ package advent.of.code
 class Day23 : Puzzle<List<Pair<String, String>>, String> {
 
     override fun parse(input: List<String>) = input.map { line ->
-        line.split("-").let { if (it[0] < it[1]) it[0] to it[1] else it[1] to it[0] }
+        line.split("-").let { it[0] to it[1] }
     }
 
     override fun partOne(input: List<Pair<String, String>>): String {
