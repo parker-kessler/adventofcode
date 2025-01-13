@@ -113,7 +113,7 @@ class Day10 : Puzzle<String, Int> {
             frequencies = mutableMapOf<Element, Int>().apply {
                 frequencies.entries.forEach { (element, count) ->
                     element.decays.split(".").mapNotNull { byName[it] }.forEach { decayedElement ->
-                        this[decayedElement] = this.getOrDefault(decayedElement, 0) + count
+                        compute(decayedElement) { _, v -> if (v == null) count else v + count }
                     }
                 }
             }
