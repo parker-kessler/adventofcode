@@ -1,6 +1,6 @@
 package advent.of.code
 
-@Files( "/Day13.txt")
+@Files("/Day13.txt")
 class Day13 : Puzzle<List<Triple<String, String, Int>>, Int> {
 
     override fun parse(input: List<String>) = input.map { line ->

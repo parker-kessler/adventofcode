@@ -1,6 +1,6 @@
 package advent.of.code
 
-@Files( "/Day12.txt")
+@Files("/Day12.txt")
 class Day12 : Puzzle<String, Int> {
 
     private data class State(var red: Boolean = false, var sum: Int = 0, val cause: String = "")
@@ -18,8 +18,8 @@ class Day12 : Puzzle<String, Int> {
                 "red" -> stack.last().takeIf { it.cause == "{" }?.red = true
                 "{" -> stack.add(State(cause = value))
                 "[" -> stack.add(State(cause = value))
-                "]" -> stack.removeLast().let{ stack.last().sum += it.sum }
-                "}" -> stack.removeLast().takeIf { !it.red }?.let{ stack.last().sum += it.sum }
+                "]" -> stack.removeLast().let { stack.last().sum += it.sum }
+                "}" -> stack.removeLast().takeIf { !it.red }?.let { stack.last().sum += it.sum }
                 else -> stack.last().sum += value.toInt()
             }
         }
