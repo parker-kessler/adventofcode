@@ -34,11 +34,12 @@ class Day21 : Puzzle<Pair<Day21.Shop, Day21.Boss>, Int> {
     }
 
     data class Shop(val weapons: List<Item>, val armors: List<Item>, val rings: List<Item>)
-    data class Item(val cost: Int, val damage: Int, val armor:Int) {
+    data class Item(val cost: Int, val damage: Int, val armor: Int) {
         operator fun plus(item: Item): Item {
             return Item(cost = cost + item.cost, damage = damage + item.damage, armor = armor + item.armor)
         }
     }
+
     data class Boss(val hitPoints: Int, val damage: Int, val armor: Int)
 
     override fun parse(input: List<String>): Pair<Shop, Boss> {

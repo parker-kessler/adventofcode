@@ -25,7 +25,12 @@ class Day15 : Puzzle<List<Day15.Ingredient>, Int> {
         return permutation(input, Array(input.size) { 0 }.apply { this[0] = MAX }, 0, limitCalories = true)
     }
 
-    private fun permutation(ingredients: List<Ingredient>, amounts: Array<Int>, index: Int, limitCalories: Boolean = false): Int {
+    private fun permutation(
+        ingredients: List<Ingredient>,
+        amounts: Array<Int>,
+        index: Int,
+        limitCalories: Boolean = false
+    ): Int {
         if (index == amounts.size - 1) {
             var capacity = 0
             var durability = 0

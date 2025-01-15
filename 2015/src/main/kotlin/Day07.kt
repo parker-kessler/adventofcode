@@ -40,31 +40,37 @@ class Day07 : Puzzle<List<Day07.Operation>, Int> {
                 is InitialOperation -> {
                     map[operation.output] = operation.input
                 }
+
                 is AndOperation -> {
                     if (map.containsKey(operation.left) && map.containsKey(operation.right)) {
                         map[operation.output] = map[operation.left]!! and map[operation.right]!!
                     } else queue.add(operation)
                 }
+
                 is OrOperation -> {
                     if (map.containsKey(operation.left) && map.containsKey(operation.right)) {
                         map[operation.output] = map[operation.left]!! or map[operation.right]!!
                     } else queue.add(operation)
                 }
+
                 is MappingOperation -> {
                     if (map.containsKey(operation.input)) {
                         map[operation.output] = map[operation.input]!!
                     } else queue.add(operation)
                 }
+
                 is NotOperation -> {
                     if (map.containsKey(operation.input)) {
                         map[operation.output] = map[operation.input]!!.inv() % 65535
                     } else queue.add(operation)
                 }
+
                 is LeftShiftOperation -> {
                     if (map.containsKey(operation.input)) {
                         map[operation.output] = map[operation.input]!! shl operation.amount
                     } else queue.add(operation)
                 }
+
                 is RightShiftOperation -> {
                     if (map.containsKey(operation.input)) {
                         map[operation.output] = map[operation.input]!! shr operation.amount
