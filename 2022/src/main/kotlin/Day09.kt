@@ -1,6 +1,6 @@
 package advent.of.code
 
-@Files("/Day09.txt", "/Test.txt")
+@Files("/Day09.txt")
 class Day09 : Puzzle<List<String>, Int> {
 
     override fun parse(input: List<String>): List<String> = input

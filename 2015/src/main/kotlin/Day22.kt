@@ -59,7 +59,7 @@ class Day22 : Puzzle<Day22.Boss, Int> {
     }
 
     internal class Wizard(
-        var hp: Int, var mana: Int, // {hp, dmg}
+        var hp: Int, var mana: Int,
         var boss: IntArray
     ) : Cloneable {
         var armor: Int = 0
@@ -74,7 +74,7 @@ class Day22 : Puzzle<Day22.Boss, Int> {
             manaSpent += spell.mana
             when (spell) {
                 Spell.MAGIC_MISSILE -> boss[0] -= 4
-                Spell.DRAIN -> { // Drain
+                Spell.DRAIN -> {
                     hp += 2
                     boss[0] -= 2
                 }
